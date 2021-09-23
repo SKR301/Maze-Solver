@@ -8,6 +8,8 @@ private:
 public:
 	MazeSolver(int,int);
 
+	MazeSolver(std::vector<int>, int, int);
+
 	void genMaze();
 
 	void solve();
@@ -46,6 +48,20 @@ MazeSolver::MazeSolver(int r, int c){
 	}
 }
 
+MazeSolver::MazeSolver(std::vector<int> input, int r, int c){
+	this->ROW = r;
+	this->COL = c;
+
+	for(int a=0;a<r;a++){
+		std::vector<int> temp;
+		temp.clear();
+		for(int b=0;b<c;b++){
+			temp.push_back(input[a*8 + b]);
+		}
+		this->maze.push_back(temp);
+	}
+}
+
 void MazeSolver::genMaze(){
 	srand (time(NULL));
 	for(int a = 0;a < this->ROW;a++){
@@ -63,7 +79,7 @@ void MazeSolver::solve(){
 		int currCol;
 
 	while(!this->helperQueue.empty()){
-		printMaze();
+		printQueue();
 		currRow = this->helperQueue.front()[0];
 		currCol = this->helperQueue.front()[1];
 		if(!isBlocked(currRow,currCol)){
