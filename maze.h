@@ -22,7 +22,7 @@ public:
 
 	void printQueue();
 
-	bool isSolved(int,int);
+	bool isSolved();
 
 	bool isVisited(int,int);
 
@@ -32,6 +32,7 @@ public:
 
 };
 
+// constructor for row and col
 MazeSolver::MazeSolver(int r, int c){
 	this->ROW = r;
 	this->COL = c;
@@ -47,7 +48,8 @@ MazeSolver::MazeSolver(int r, int c){
 		this->maze.push_back(temp);
 	}
 }
-
+	
+// constructor with row, col and maze
 MazeSolver::MazeSolver(std::vector<int> input, int r, int c){
 	this->ROW = r;
 	this->COL = c;
@@ -62,26 +64,32 @@ MazeSolver::MazeSolver(std::vector<int> input, int r, int c){
 	}
 }
 
-void MazeSolver::genMaze(){
+// generates a random maze
+void MazeSolver::genMaze(int blocksPercentage){
 	srand (time(NULL));
 	for(int a = 0;a < this->ROW;a++){
 		for(int b = 0;b < this->COL;b++){
 			int val = rand() % 100;
-			this->maze[a][b] = (val>60)? -1: 0;
+			this->maze[a][b] = (val>blocksPercentage)? 0: -1;
 		}
 	}
-	this->maze[0][4] = 1;
-	insertBoxInQueue(0,4);
 }
 
+//ALGO starts with [0,4]
 void MazeSolver::solve(){
-		int currRow;
-		int currCol;
+	this->maze[0][4] = 1;									// change starting cell here [0,4]
+	insertBoxInQueue(0,4);									// and here too
+	int currRow;
+	int currCol;
 
 	while(!this->helperQueue.empty()){
-		printQueue();
 		currRow = this->helperQueue.front()[0];
 		currCol = this->helperQueue.front()[1];
+
+		if(currRow == this->ROW-1){
+			break;
+		}
+
 		if(!isBlocked(currRow,currCol)){
 			setNeighbour(currRow, currCol);
 		}else{
@@ -89,23 +97,36 @@ void MazeSolver::solve(){
 		}
 		this->helperQueue.pop();
 	}
+
+	if(isSolved()){
+		std::cout<<"\n\nSolved Successfully";
+	} else {
+		std::cout<<"\n\nNo possible Solution";
+	}
 }
 
 // check if maze is solved
-bool MazeSolver::isSolved(int a,int b){
-	return (this->maze[a][b] == this->ROW)? true: false;
+bool MazeSolver::isSolved(){
+	for(int b=0;b<this->COL;b++){
+		if(this->maze[this->ROW-1][b] != 0 && this->maze[this->ROW-1][b] != -1){
+			return true;
+		}
+	}
+	return false;
 }
 
-// something new to check if the cell is visited
+// check if cell is filled/visited
 bool MazeSolver::isVisited(int a,int b){
 	return  (this->maze[a][b] != 0)? true: false;
 }
 
+//
 bool MazeSolver::isBlocked(int a,int b){
 	return  (this->maze[a][b] == -1)? true: false;
 }
 
 void MazeSolver::setNeighbour(int a,int b){
+
 	int possibleVal = this->maze[a][b] + 1;
 	if(a!=0){
 		if(!isBlocked(a-1,b)){
@@ -115,7 +136,6 @@ void MazeSolver::setNeighbour(int a,int b){
 				this->maze[a-1][b] = possibleVal;
 				insertBoxInQueue(a-1,b);
 			}
-			// insertBoxInQueue(a-1,b);
 		}
 	}
 	if(b!=0){
@@ -126,7 +146,6 @@ void MazeSolver::setNeighbour(int a,int b){
 				this->maze[a][b-1] = possibleVal;
 				insertBoxInQueue(a,b-1);
 			}
-			// insertBoxInQueue(a,b-1);
 		}
 	}
 	if(a!=this->ROW){
@@ -137,7 +156,6 @@ void MazeSolver::setNeighbour(int a,int b){
 				this->maze[a+1][b] = possibleVal;
 				insertBoxInQueue(a+1,b);
 			}
-			// insertBoxInQueue(a+1,b);
 		}
 	}
 	if(b!=this->COL){
@@ -148,11 +166,11 @@ void MazeSolver::setNeighbour(int a,int b){
 				this->maze[a][b+1] = possibleVal;
 				insertBoxInQueue(a,b+1);
 			}
-			// insertBoxInQueue(a,b+1);
 		}
 	}
 }
 
+//add a cell to queue
 void MazeSolver::insertBoxInQueue(int a,int b){
 	std::vector<int> box;
 	box.push_back(a);
@@ -160,6 +178,7 @@ void MazeSolver::insertBoxInQueue(int a,int b){
 	this->helperQueue.push(box);
 }
 
+//display maze
 void MazeSolver::printMaze(){
 	std::cout<<"\n\n";
 	for(int a = 0;a < this->ROW;a++){
@@ -176,7 +195,9 @@ void MazeSolver::printMaze(){
 	}
 }
 
+//display maze
 void MazeSolver::printQueue(){
+	std::cout<<"\n\n";
 	std::queue<std::vector<int>>q = this->helperQueue;
 	while(!q.empty()){
 		std::cout<<"["<<q.front()[0]<<","<<q.front()[1]<<"]";
@@ -184,6 +205,7 @@ void MazeSolver::printQueue(){
 	}
 }
 
+//return maze
 std::vector<std::vector<int>> MazeSolver::getMaze(){
 	return this->maze;
 }
