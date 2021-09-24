@@ -1,9 +1,12 @@
+#include "logger.h"
+
 class MazeSolver{
 private:
 	std::vector<std::vector<int>> maze;
 	int ROW;
 	int COL;
 	std::queue<std::vector<int>> helperQueue;
+	logger l;
 
 public:
 	MazeSolver(int,int);
@@ -175,15 +178,20 @@ void MazeSolver::insertBoxInQueue(int a,int b){
 
 //display maze
 void MazeSolver::printMaze(){
-	std::cout<<"\n\n";
+	// std::cout<<"\n\nMaze:\n";
+	l.log("\n\nMaze:\n");
+
 	for(int a = 0;a < this->ROW;a++){
 		for(int b = 0;b < this->COL;b++){
 			if(this->maze[a][b] == -1){
-				std::cout<<"X"<<"\t";
+				// std::cout<<"X"<<"\t";
+				l.log("X\t","red");
 			} else if(this->maze[a][b] == 0){
-				std::cout<<"-"<<"\t";
+				// std::cout<<"-"<<"\t";
+				l.log("-\t","blue");
 			} else {
-				std::cout<<this->maze[a][b]<<"\t";
+				// std::cout<<this->maze[a][b]<<"\t";
+				l.log(std::to_string(this->maze[a][b])+"\t","yellow");
 			}
 		}
 		std::cout<<"\n";
@@ -195,7 +203,8 @@ void MazeSolver::printQueue(){
 	std::cout<<"\n\n";
 	std::queue<std::vector<int>>q = this->helperQueue;
 	while(!q.empty()){
-		std::cout<<"["<<q.front()[0]<<","<<q.front()[1]<<"]";
+		// std::cout<<"["<<q.front()[0]<<","<<q.front()[1]<<"]";
+		l.log("["+std::to_string(q.front()[0])+","+std::to_string(q.front()[1])+"]", "yellow");
 		q.pop();
 	}
 }
@@ -207,9 +216,13 @@ std::vector<std::vector<int>> MazeSolver::getMaze(){
 
 //print the solution path
 void MazeSolver::printSol(){
-	std::cout<<"\n\n";
+	// std::cout<<"\n\n Path:\n";
+	l.log("\n\nPath:\n","white");
+
 	if(!isSolved()){
-		std::cout<<"Not possible PATH";
+		// std::cout<<"Not possible PATH";
+		l.log("Not possible PATH!!!","red");
+		l.log("");
 		return;
 	}
 
@@ -224,7 +237,8 @@ void MazeSolver::printSol(){
 	}
 
 	do{
-		std::cout<<"["<<a<<","<<b<<"]";
+		// std::cout<<"["<<a<<","<<b<<"]";
+		l.log("["+std::to_string(a)+","+std::to_string(b)+"]","green");
 
 		if((a-1 != -1) && (!isBlocked(a-1,b)) && (this->maze[a][b]-1 == this->maze[a-1][b])) {
 			// std::cout<<" ^ ";
@@ -253,5 +267,7 @@ void MazeSolver::printSol(){
 
 	}while(!(a == 0 && b == 4));
 	
-	std::cout<<"["<<a<<","<<b<<"]";
+	// std::cout<<"["<<a<<","<<b<<"]";
+	l.log("["+std::to_string(a)+","+std::to_string(b)+"]","green");
+	l.log("");
 }
