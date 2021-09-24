@@ -10,17 +10,13 @@ public:
 
 	MazeSolver(std::vector<int>, int, int);
 
-	void genMaze();
+	void genMaze(int);
 
 	void solve();
 
 	std::vector<std::vector<int>> getMaze();
 
 	void insertBoxInQueue(int,int);
-
-	void printMaze();
-
-	void printQueue();
 
 	bool isSolved();
 
@@ -30,6 +26,11 @@ public:
 
 	void setNeighbour(int,int);
 
+	void printMaze();
+
+	void printQueue();
+
+	void printSol();
 };
 
 // constructor for row and col
@@ -96,12 +97,6 @@ void MazeSolver::solve(){
 
 		}
 		this->helperQueue.pop();
-	}
-
-	if(isSolved()){
-		std::cout<<"\n\nSolved Successfully";
-	} else {
-		std::cout<<"\n\nNo possible Solution";
 	}
 }
 
@@ -208,4 +203,55 @@ void MazeSolver::printQueue(){
 //return maze
 std::vector<std::vector<int>> MazeSolver::getMaze(){
 	return this->maze;
+}
+
+//print the solution path
+void MazeSolver::printSol(){
+	std::cout<<"\n\n";
+	if(!isSolved()){
+		std::cout<<"Not possible PATH";
+		return;
+	}
+
+	int a = this->ROW-1;
+	int b;
+
+	for(int x=0; x<this->COL;x++){
+		if(this->maze[a][x] != 0 && this->maze[a][x] != -1){
+			b = x;
+			break;
+		}
+	}
+
+	do{
+		std::cout<<"["<<a<<","<<b<<"]";
+
+		if((a-1 != -1) && (!isBlocked(a-1,b)) && (this->maze[a][b]-1 == this->maze[a-1][b])) {
+			// std::cout<<" ^ ";
+			a = a-1;
+			b = b;
+			continue;
+		}
+		if((a+1 != -1) && (!isBlocked(a+1,b)) && (this->maze[a][b]-1 == this->maze[a+1][b])) {
+			// std::cout<<" v ";
+			a = a+1;
+			b = b;
+			continue;
+		}
+		if((b-1 != -1) && (!isBlocked(a,b-1)) && (this->maze[a][b]-1 == this->maze[a][b-1])) {
+			// std::cout<<" < ";
+			a = a;
+			b = b-1;
+			continue;
+		}
+		if((b+1 != -1) && (!isBlocked(a,b+1)) && (this->maze[a][b]-1 == this->maze[a][b+1])) {
+			// std::cout<<" > ";
+			a = a;
+			b = b+1;
+			continue;
+		}
+
+	}while(!(a == 0 && b == 4));
+	
+	std::cout<<"["<<a<<","<<b<<"]";
 }

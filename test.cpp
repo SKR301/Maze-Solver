@@ -13,10 +13,12 @@ int main(int argc, char const *argv[])
 							 	0,	-1,	0,	-1,	-1,	0,	-1,	-1
 							};
 
-	MazeSolver solver(maze,8,8);
-	solver.genMaze(60);
+	// MazeSolver solver(maze,8,8);
+	MazeSolver solver(8,8);
+	solver.genMaze(40);
 	solver.solve();
 	solver.printMaze();
+	solver.printSol();
 
 	std::cout<<"\n\n";
 	system("pause");
