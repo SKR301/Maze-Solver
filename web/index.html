@@ -13,42 +13,49 @@
 <body>
     <div id="maze" class="container">
         <div id="row0" class="row">
-            <div id="cell_0_0" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_0_1" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_0_2" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_0_3" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_0_4" class="col my-2 mx-2" onclick="setWall(this)"></div>
+            <div id="cell_0_0" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_0_1" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_0_2" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_0_3" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_0_4" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
         </div>
         <div id="row1" class="row">
-            <div id="cell_1_0" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_1_1" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_1_2" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_1_3" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_1_4" class="col my-2 mx-2" onclick="setWall(this)"></div>
+            <div id="cell_1_0" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_1_1" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_1_2" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_1_3" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_1_4" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
         </div>
         <div id="row2" class="row">
-            <div id="cell_2_0" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_2_1" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_2_2" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_2_3" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_2_4" class="col my-2 mx-2" onclick="setWall(this)"></div>
+            <div id="cell_2_0" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_2_1" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_2_2" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_2_3" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_2_4" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
         </div>
         <div id="row3" class="row">
-            <div id="cell_3_0" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_3_1" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_3_2" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_3_3" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_3_4" class="col my-2 mx-2" onclick="setWall(this)"></div>
+            <div id="cell_3_0" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_3_1" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_3_2" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_3_3" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_3_4" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
         </div>
         <div id="row4" class="row">
-            <div id="cell_4_0" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_4_1" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_4_2" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_4_3" class="col my-2 mx-2" onclick="setWall(this)"></div>
-            <div id="cell_4_4" class="col my-2 mx-2" onclick="setWall(this)"></div>
+            <div id="cell_4_0" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_4_1" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_4_2" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_4_3" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+            <div id="cell_4_4" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
         </div>
     </div>
+
+    <button id="wallBtn" onclick="enableWall()">wall</button>
+    <button id="startBtn" onclick="enableStart()">start</button>
+    <button id="endBtn" onclick="enableEnd()">end</button>
+    <button id="solveBtn" onclick="">solve</button>
+    
 </body>
-<script src="js.js">
+<script src="js/menuBtn.js"></script>
+<script src="js/main.js"></script>
 </script>
 </html>
