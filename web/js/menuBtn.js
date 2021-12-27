@@ -44,5 +44,13 @@ function enableEnd(){
         document.getElementById('startBtn').disabled = false;
         document.getElementById('endBtn').disabled = false;
     }
+}
 
+function reset(){
+    maze = Array.from({ length: ROWS }, () => 
+        Array.from({ length: COLS }, () => 0)
+    );
+    
+    startPos = {x: -1, y: -1};
+    endPos = {x: -1, y: -1};
 }
