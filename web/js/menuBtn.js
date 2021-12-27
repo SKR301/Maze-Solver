@@ -47,5 +47,5 @@ function enableEnd(){
 }
 
 function reset(){
-    window.location.reload();
+    initMaze(ROWS, COLS);
 }

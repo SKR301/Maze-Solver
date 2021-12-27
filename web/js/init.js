@@ -1,3 +1,9 @@
+var ROWS = 0;
+var COLS = 0;
+var maze = [];
+var startPos = {x: -1, y: -1};
+var endPos = {x: -1, y: -1};
+
 function initMaze(rows,cols){
     ROWS = rows;
     COLS = cols;
@@ -8,7 +14,17 @@ function initMaze(rows,cols){
     
     for(a=0;a<ROWS;a++){
         for(b=0;b<COLS;b++){
-            maze[a][b] = 1;
+            maze[a][b] = 0;
+            if(document.getElementById('cell_'+(a)+'_'+(b)) != undefined){
+                document.getElementById('cell_'+(a)+'_'+(b)).innerHTML = '';
+                document.getElementById('cell_'+(a)+'_'+(b)).style.backgroundColor = 'grey';
+            }
         }
     }
+
+    startPos = {x: -1, y: -1};
+    endPos = {x: -1, y: -1};
+
+
+
 }
