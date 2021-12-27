@@ -11,51 +11,49 @@
     </style>
 </head>
 <body>
-    <div id="maze" class="container">
-        <div id="row0" class="row">
-            <div id="cell_0_0" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_0_1" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_0_2" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_0_3" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_0_4" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-        </div>
-        <div id="row1" class="row">
-            <div id="cell_1_0" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_1_1" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_1_2" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_1_3" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_1_4" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-        </div>
-        <div id="row2" class="row">
-            <div id="cell_2_0" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_2_1" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_2_2" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_2_3" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_2_4" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-        </div>
-        <div id="row3" class="row">
-            <div id="cell_3_0" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_3_1" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_3_2" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_3_3" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_3_4" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-        </div>
-        <div id="row4" class="row">
-            <div id="cell_4_0" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_4_1" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_4_2" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_4_3" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-            <div id="cell_4_4" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-        </div>
-    </div>
 
-    <button id="wallBtn" onclick="enableWall()">wall</button>
-    <button id="startBtn" onclick="enableStart()">start</button>
-    <button id="endBtn" onclick="enableEnd()">end</button>
-    <button id="solveBtn" onclick="solve()">solve</button>
-    <button id="resetBtn" onclick="reset()">reset</button>
+    <button onclick="createMaze(5, 5)">5x5</button>
+    <button onclick="createMaze(8, 8)">8x8</button>
+    <button onclick="createMaze(10, 10)">10x10</button>
+    <button onclick="createMaze(15, 15)">15x15</button>
+    <button onclick="createMaze(20, 20)">20x20</button>
+    <button onclick="createMaze(25, 25)">25x25</button>
+    <button onclick="createMaze(50, 50)">50x50</button>
+
+    <center class="mt-5">
+        <button id="wallBtn" onclick="enableWall()">wall</button>
+        <button id="startBtn" onclick="enableStart()">start</button>
+        <button id="endBtn" onclick="enableEnd()">end</button>
+        <button id="solveBtn" onclick="solve()">solve</button>
+        <button id="resetBtn" onclick="reset()">reset</button>
+    </center>
+    
+    <div id="maze" class="container mt-5" style="height: 750px; width: 1500px;">
+        <!-- <div id="row0" class="row">
+            <div id="cell_0_0" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
+        </div> -->
+    </div>
     
 </body>
+<script>
+    function createMaze(row,col){
+        for(a=0;a<row;a++){
+            var row = document.createElement('div');
+                row.id = 'row'+a;
+                row.className = 'row';
+            for(b=0;b<col;b++){
+                console.log(a+" "+b);
+                var cell = document.createElement('div');
+                    cell.id = 'cell_'+a+'_'+b;
+                    cell.className = 'col my-2 mx-2';
+                    cell.onclick = function(){clickedCell(this)}
+
+                row.appendChild(cell);
+            }
+            document.getElementById('maze').insertBefore(row, document.getElementById('maze').childNodes[0]);   
+        }
+    }
+</script>
 <script src="js/menuBtn.js"></script>
 <script src="js/main.js"></script>
 <script src="js/solveMaze.js"></script>
