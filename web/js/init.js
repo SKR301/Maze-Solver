@@ -24,7 +24,13 @@ function initMaze(rows,cols){
 
     startPos = {x: -1, y: -1};
     endPos = {x: -1, y: -1};
+    
+    isWall = false;
+    isStart = false;
+    isEnd = false;
+    isSolvePressed = false;
 
-
-
+    document.getElementById('wallBtn').disabled = false;
+    document.getElementById('startBtn').disabled = false;
+    document.getElementById('endBtn').disabled = false;
 }

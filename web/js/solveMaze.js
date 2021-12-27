@@ -9,6 +9,9 @@ function solve(){
         alert('Select an ending point before proceeding');
         return;
     }
+
+	isSolvePressed = true;
+
     document.getElementById('wallBtn').disabled = true;
     document.getElementById('startBtn').disabled = true;
     document.getElementById('endBtn').disabled = true;

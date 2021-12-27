@@ -1,19 +1,18 @@
 function clickedCell(cell){
-    console.log(maze)
-    if(isWall){
+    if(isWall && !isSolvePressed){
         setWall(cell);
     }
-    if(isStart){
+    if(isStart && !isSolvePressed){
         setStart(cell);
     }
-    if(isEnd){
+    if(isEnd && !isSolvePressed){
         setEnd(cell);
     }
 }
 
 function setWall(cell){
-    var row = cell.id[5];
-    var col = cell.id[7];
+    var row = Number(cell.id.split('_')[1]);
+    var col = Number(cell.id.split('_')[2]);
 
     if(maze[row][col] == -1){
         maze[row][col] = 0;
@@ -25,8 +24,8 @@ function setWall(cell){
 }
 
 function setStart(cell){
-    var row = Number(cell.id[5]);
-    var col = Number(cell.id[7]);
+    var row = Number(cell.id.split('_')[1]);
+    var col = Number(cell.id.split('_')[2]);
 
     if(row == startPos.x && col == startPos.y){
         maze[row][col] = 0;
@@ -41,14 +40,15 @@ function setStart(cell){
                 maze[row][col] = 1;
                 startPos = {x: row, y: col};
                 cell.style.backgroundColor = 'yellow';
+                console.log(startPos);
             }
         }
     }
 }
 
 function setEnd(cell){
-    var row = Number(cell.id[5]);
-    var col = Number(cell.id[7]);
+    var row = Number(cell.id.split('_')[1]);
+    var col = Number(cell.id.split('_')[2]);
 
     if(row == endPos.x && col == endPos.y){
         maze[row][col] = 0;
@@ -64,9 +64,6 @@ function setEnd(cell){
                 cell.style.backgroundColor = 'red';
             }
         }
+        console.log(endPos);
     }
 }
-
-
-
-

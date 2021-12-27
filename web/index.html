@@ -18,7 +18,7 @@
     <button onclick="createMaze(15, 15)">15x15</button>
     <button onclick="createMaze(20, 20)">20x20</button>
     <button onclick="createMaze(25, 25)">25x25</button>
-    <button onclick="createMaze(50, 50)">50x50</button>
+    <!-- <button onclick="createMaze(50, 50)">50x50</button> -->
 
     <center class="mt-5">
         <button id="wallBtn" onclick="enableWall()">wall</button>
@@ -59,6 +59,7 @@
         if(rows == 50){
             height = 15;
         }
+
         document.getElementById('maze').innerHTML = '';
         for(var a=0;a<rows;a++){
             var row = document.createElement('div');
@@ -67,7 +68,7 @@
             for(var b=0;b<cols;b++){
                 var cell = document.createElement('div');
                     cell.id = 'cell_'+(a)+'_'+(b);
-                    cell.className = 'col border border-light';
+                    cell.className = 'col border border-light rounded';
                     cell.onclick = function(){clickedCell(this)};
                     cell.style.height = height+'px';
                 

@@ -1,8 +1,6 @@
-var isWall = false;
-var isStart = false;
-var isEnd = false;
-
-document.getElementById('wallBtn').click();
+var isWall;
+var isStart;
+var isEnd;
 
 function enableWall(){
     isWall = !isWall;
