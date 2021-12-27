@@ -70,6 +70,7 @@
                     cell.id = 'cell_'+(a)+'_'+(b);
                     cell.className = 'col border border-light rounded';
                     cell.onclick = function(){clickedCell(this)};
+                    cell.onmouseover = function(){hoveredCell(this)};
                     cell.style.height = height+'px';
                 
                 row.appendChild(cell);
@@ -81,5 +82,4 @@
 <script src="js/menuBtn.js"></script>
 <script src="js/main.js"></script>
 <script src="js/solveMaze.js"></script>
-</script>
 </html>

@@ -34,3 +34,11 @@ function initMaze(rows,cols){
     document.getElementById('startBtn').disabled = false;
     document.getElementById('endBtn').disabled = false;
 }
+
+var isMouseDown = false;
+document.body.onmousedown = function() { 
+    isMouseDown = true;
+}
+document.body.onmouseup = function() {
+    isMouseDown = false;
+}

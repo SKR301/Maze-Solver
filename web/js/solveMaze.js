@@ -34,6 +34,7 @@ function solve(){
 
 		helperQueue.shift();
 	}    
+	console.log(maze);
 }
 
 function isVisited(a,b){

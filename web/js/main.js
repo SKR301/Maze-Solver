@@ -9,6 +9,11 @@ function clickedCell(cell){
         setEnd(cell);
     }
 }
+function hoveredCell(cell){
+    if(isWall && !isSolvePressed && mouseDown){
+        setWall(cell);
+    }
+}
 
 function setWall(cell){
     var row = Number(cell.id.split('_')[1]);
