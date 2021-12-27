@@ -1,14 +1,5 @@
-const ROWS = 5;
-const COLS = 5;
-
-var startPos = {x: -1, y: -1};
-var endPos = {x: -1, y: -1};
-
-var maze = Array.from({ length: ROWS }, () => 
-    Array.from({ length: COLS }, () => 0)
-);
-
 function clickedCell(cell){
+    console.log(maze)
     if(isWall){
         setWall(cell);
     }
@@ -44,6 +35,7 @@ function setStart(cell){
     } else {
         if(startPos.x == -1 && startPos.y == -1){
             if(maze[row][col] != 0){
+                console.log(maze[row][col], startPos)
                 alert('This is already occupied can\'t be a starting point')
             } else {
                 maze[row][col] = 1;

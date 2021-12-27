@@ -28,29 +28,58 @@
         <button id="resetBtn" onclick="reset()">reset</button>
     </center>
     
-    <div id="maze" class="container mt-5" style="height: 750px; width: 1500px;">
-        <!-- <div id="row0" class="row">
-            <div id="cell_0_0" class="col my-2 mx-2" onclick="clickedCell(this)"></div>
-        </div> -->
+    <div id="maze" class="container-fluid d-flex flex-column mt-5" style="width: 1500px;">
     </div>
     
 </body>
+<script src="js/init.js"></script>
 <script>
-    function createMaze(row,col){
-        for(a=0;a<row;a++){
-            var row = document.createElement('div');
-                row.id = 'row'+a;
-                row.className = 'row';
-            for(b=0;b<col;b++){
-                console.log(a+" "+b);
-                var cell = document.createElement('div');
-                    cell.id = 'cell_'+a+'_'+b;
-                    cell.className = 'col my-2 mx-2';
-                    cell.onclick = function(){clickedCell(this)}
+    var ROWS = 0;
+    var COLS = 0;
+    var maze = [];
+    var startPos = {x: -1, y: -1};
+    var endPos = {x: -1, y: -1};
 
+    function createMaze(rows,cols){
+        initMaze(rows, cols);
+
+        var height = 0;
+        if(rows == 5){
+            height = 150;
+        }
+        if(rows == 8){
+            height = 94;
+        }
+        if(rows == 10){
+            height = 75;
+        }
+        if(rows == 15){
+            height = 50;
+        }
+        if(rows == 20){
+            height = 38;
+        }
+        if(rows == 25){
+            height = 30;
+        }
+        if(rows == 50){
+            height = 15;
+        }
+        document.getElementById('maze').innerHTML = '';
+        for(var a=0;a<rows;a++){
+            var row = document.createElement('div');
+                row.id = 'row'+(a);
+                row.className = 'row';
+            for(var b=0;b<cols;b++){
+                var cell = document.createElement('div');
+                    cell.id = 'cell_'+(a)+'_'+(b);
+                    cell.className = 'col border border-light';
+                    cell.onclick = function(){clickedCell(this)};
+                    cell.style.height = height+'px';
+                
                 row.appendChild(cell);
             }
-            document.getElementById('maze').insertBefore(row, document.getElementById('maze').childNodes[0]);   
+            document.getElementById('maze').appendChild(row);
         }
     }
 </script>
