@@ -10,9 +10,6 @@ function clickedCell(cell){
     }
 }
 function hoveredCell(cell){
-    console.log('yep')
-    console.log(isMouseDown)
-    
     if(isWall && !isSolvePressed && isMouseDown){
         setWall(cell);
     }

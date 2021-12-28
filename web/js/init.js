@@ -1,5 +1,10 @@
 var ROWS = 0;
 var COLS = 0;
+
+var isWall;
+var isStart;
+var isEnd;
+
 var maze = [];
 var startPos = {x: -1, y: -1};
 var endPos = {x: -1, y: -1};

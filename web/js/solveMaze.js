@@ -1,6 +1,7 @@
-helperQueue = [];
-count = 0;
+var helperQueue = [];
+
 function solve(){
+	helperQueue = [];
     if(startPos.x == -1 || startPos.y == -1){
         alert('Select a starting point before proceeding');
         return;
@@ -22,8 +23,21 @@ function solve(){
 		currRow = helperQueue[0].x;
 		currCol = helperQueue[0].y; 
 
-		if((currRow == endPos.x-1 && currCol == endPos.y)||(currRow == endPos.x+1 && currCol == endPos.y)||(currRow == endPos.x && currCol == endPos.y-1)||(currRow == endPos.x && currCol == endPos.y+1)){
-            break;
+		if(currRow+1 == endPos.x && currCol == endPos.y){
+			document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
+			break;
+		}
+		if(currRow-1 == endPos.x && currCol == endPos.y){
+			document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
+			break;
+		}
+		if(currRow == endPos.x && currCol+1 == endPos.y){
+			document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
+			break;
+		}
+		if(currRow == endPos.x && currCol-1 == endPos.y){
+			document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
+			break;
 		}
 
 		if(!isBlocked(currRow,currCol)){

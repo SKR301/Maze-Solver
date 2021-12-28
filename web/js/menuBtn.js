@@ -1,7 +1,3 @@
-var isWall;
-var isStart;
-var isEnd;
-
 function enableWall(){
     isWall = !isWall;
     if(isWall){
