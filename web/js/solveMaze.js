@@ -45,7 +45,7 @@ function solve(){
 		}else{
 
 		}
-
+		setTimeout(10000);
 		helperQueue.shift();
 	}    
 	console.log(maze);
