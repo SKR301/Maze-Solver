@@ -21,10 +21,12 @@ function setWall(cell){
 
     if(maze[row][col] == -1){
         maze[row][col] = 0;
-        cell.style.backgroundColor = 'grey';
+        cell.classList.remove('bg-dark');
+        cell.classList.add('bg-info');
     } else {
         maze[row][col] = -1;
-        cell.style.backgroundColor = 'black';
+        cell.classList.remove('bg-info');
+        cell.classList.add('bg-dark');
     }
 }
 

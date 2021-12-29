@@ -83,7 +83,7 @@ function createMaze(rows,cols){
         for(var b=0;b<cols;b++){
             var cell = document.createElement('div');
                 cell.id = 'cell_'+(a)+'_'+(b);
-                cell.className = 'col border border-light rounded';
+                cell.className = 'col border border-dark rounded bg-info';
                 cell.onclick = function(){clickedCell(this)};
                 cell.onmouseover = function(){hoveredCell(this)};
                 cell.style.height = height+'px';
