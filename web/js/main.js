@@ -42,7 +42,6 @@ function setStart(cell){
     } else {
         if(startPos.x == -1 && startPos.y == -1){
             if(maze[row][col] != 0){
-                console.log(maze[row][col], startPos)
                 alert('This is already occupied can\'t be a starting point')
             } else {
                 maze[row][col] = 1;

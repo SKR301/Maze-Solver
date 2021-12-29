@@ -19,7 +19,7 @@ function solve(){
 
     helperQueue.push(startPos);
     popProcessPush()
-	showPath();
+	// showPath();
 }
 
 function popProcessPush(){
@@ -62,9 +62,9 @@ function popProcessPush(){
 	},50); 
 }
 
-function showPath(){
-	var a = endPos.x;
-	var b = endPos.y;
+// function showPath(){
+// 	var a = endPos.x;
+// 	var b = endPos.y;
 	// do{
 	// 	// console.log(a,b)
 	// 	if((a-1 > 0) && (!isBlocked(a-1,b)) && (maze[a][b]-1 == maze[a-1][b])) {
@@ -87,11 +87,11 @@ function showPath(){
 	// 		b = b+1;
 	// 		continue;
 	// 	}
-
+// 
 	// }while(!(a == startPos.x && b == startPos.y));
-	
-	console.log(a,b)
-}
+	// 
+	// console.log(a,b)
+// }
 
 function isVisited(a,b){
 	return  (maze[a][b] != 0)? true: false;
@@ -113,6 +113,8 @@ function setNeighbour(a, b){
 				helperQueue.push({x: a-1, y: b});
 			}
             document.getElementById('cell_'+(a-1)+'_'+(b)).innerHTML = maze[a-1][b];
+			document.getElementById('cell_'+(a-1)+'_'+(b)).classList.remove('bg-info');
+			document.getElementById('cell_'+(a-1)+'_'+(b)).classList.add('bg-secondary');
 		}
 	}
 	if(b>0){
@@ -124,6 +126,8 @@ function setNeighbour(a, b){
 				helperQueue.push({x: a, y: b-1});
 			}
             document.getElementById('cell_'+(a)+'_'+(b-1)).innerHTML = maze[a][b-1];
+			document.getElementById('cell_'+(a)+'_'+(b-1)).classList.remove('bg-info');
+			document.getElementById('cell_'+(a)+'_'+(b-1)).classList.add('bg-secondary');
 		}
 	}
 	if(a<ROWS-1){
@@ -135,6 +139,8 @@ function setNeighbour(a, b){
 				helperQueue.push({x: a+1,y: b});
 			}
             document.getElementById('cell_'+(a+1)+'_'+(b)).innerHTML = maze[a+1][b];
+			document.getElementById('cell_'+(a+1)+'_'+(b)).classList.remove('bg-info');
+			document.getElementById('cell_'+(a+1)+'_'+(b)).classList.add('bg-secondary');
 		}
 	}
 	if(b<COLS-1){
@@ -146,6 +152,8 @@ function setNeighbour(a, b){
 				helperQueue.push({x: a, y: b+1});
 			}
             document.getElementById('cell_'+(a)+'_'+(b+1)).innerHTML = maze[a][b+1];
+			document.getElementById('cell_'+(a)+'_'+(b+1)).classList.remove('bg-info');
+			document.getElementById('cell_'+(a)+'_'+(b+1)).classList.add('bg-secondary');
 		}
 	}
 }
