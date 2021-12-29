@@ -58,7 +58,7 @@ function loop(){
 			helperQueue.shift();
 			loop();
 		}
-	},100);   
+	},50);   
 }
 
 function isVisited(a,b){

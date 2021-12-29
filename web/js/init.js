@@ -22,7 +22,10 @@ function initMaze(rows,cols){
             maze[a][b] = 0;
             if(document.getElementById('cell_'+(a)+'_'+(b)) != undefined){
                 document.getElementById('cell_'+(a)+'_'+(b)).innerHTML = '';
-                document.getElementById('cell_'+(a)+'_'+(b)).className = 'col border border-dark rounded bg-info';
+                document.getElementById('cell_'+(a)+'_'+(b)).className = 'col border border-dark rounded bg-info text-center';
+                document.getElementById('cell_'+(a)+'_'+(b)).style.display = 'flex'; 
+                document.getElementById('cell_'+(a)+'_'+(b)).style.justifyContent = 'center'; 
+                document.getElementById('cell_'+(a)+'_'+(b)).style.alignItems = 'center'; 
             }
         }
     }
@@ -83,7 +86,10 @@ function createMaze(rows,cols){
         for(var b=0;b<cols;b++){
             var cell = document.createElement('div');
                 cell.id = 'cell_'+(a)+'_'+(b);
-                cell.className = 'col border border-dark rounded bg-info';
+                cell.className = 'col border border-dark rounded bg-info text-center align-middle';
+                cell.style.display = 'flex'; 
+                cell.style.justifyContent = 'center'; 
+                cell.style.alignItems = 'center'; 
                 cell.onclick = function(){clickedCell(this)};
                 cell.onmouseover = function(){hoveredCell(this)};
                 cell.style.height = height+'px';

@@ -61,7 +61,7 @@ function setEnd(cell){
     if(row == endPos.x && col == endPos.y){
         maze[row][col] = 0;
         endPos = {x: -1, y: -1};
-        cell.classList.remove('bg-success');
+        cell.classList.remove('bg-danger');
         cell.classList.add('bg-info');
     } else {
         if(endPos.x == -1 && endPos.y == -1){
@@ -71,7 +71,7 @@ function setEnd(cell){
                 maze[row][col] = NaN;
                 endPos = {x: row, y: col};
                 cell.classList.remove('bg-info');
-                cell.classList.add('bg-success');
+                cell.classList.add('bg-danger');
             }
         }
         console.log(endPos);
