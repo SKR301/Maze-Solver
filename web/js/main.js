@@ -37,7 +37,9 @@ function setStart(cell){
     if(row == startPos.x && col == startPos.y){
         maze[row][col] = 0;
         startPos = {x: -1, y: -1};
-        cell.style.backgroundColor = 'grey';
+        // cell.style.backgroundColor = 'grey';
+        cell.classList.remove('bg-light');
+        cell.classList.add('bg-info');
     } else {
         if(startPos.x == -1 && startPos.y == -1){
             if(maze[row][col] != 0){
@@ -46,8 +48,10 @@ function setStart(cell){
             } else {
                 maze[row][col] = 1;
                 startPos = {x: row, y: col};
-                cell.style.backgroundColor = 'yellow';
-                console.log(startPos);
+                // cell.style.backgroundColor = 'yellow';
+                // console.log(startPos);
+                cell.classList.remove('bg-info');
+                cell.classList.add('bg-light');
             }
         }
     }
