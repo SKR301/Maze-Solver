@@ -18,11 +18,11 @@ function solve(){
     document.getElementById('endBtn').disabled = true;
 
     helperQueue.push(startPos);
-
-    loop();
+    popProcessPush()
+	showPath();
 }
 
-function loop(){
+function popProcessPush(){
 	setTimeout(function(){
 		if(helperQueue.length > 0){
 			currRow = helperQueue[0].x;
@@ -56,9 +56,41 @@ function loop(){
 			}
 			
 			helperQueue.shift();
-			loop();
+			popProcessPush();
+		} else {
 		}
-	},50);   
+	},50); 
+}
+
+function showPath(){
+	var a = endPos.x;
+	var b = endPos.y;
+	// do{
+	// 	// console.log(a,b)
+	// 	if((a-1 > 0) && (!isBlocked(a-1,b)) && (maze[a][b]-1 == maze[a-1][b])) {
+	// 		a = a-1;
+	// 		b = b;
+	// 		continue;
+	// 	}
+	// 	if((a+1 < ROWS-1) && (!isBlocked(a+1,b)) && (maze[a][b]-1 == maze[a+1][b])) {
+	// 		a = a+1;
+	// 		b = b;
+	// 		continue;
+	// 	}
+	// 	if((b-1 > 0) && (!isBlocked(a,b-1)) && (maze[a][b]-1 == maze[a][b-1])) {
+	// 		a = a;
+	// 		b = b-1;
+	// 		continue;
+	// 	}
+	// 	if((b+1 < COLS-1) && (!isBlocked(a,b+1)) && (maze[a][b]-1 == maze[a][b+1])) {
+	// 		a = a;
+	// 		b = b+1;
+	// 		continue;
+	// 	}
+
+	// }while(!(a == startPos.x && b == startPos.y));
+	
+	console.log(a,b)
 }
 
 function isVisited(a,b){

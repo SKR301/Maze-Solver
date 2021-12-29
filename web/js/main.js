@@ -74,6 +74,5 @@ function setEnd(cell){
                 cell.classList.add('bg-danger');
             }
         }
-        console.log(endPos);
     }
 }
