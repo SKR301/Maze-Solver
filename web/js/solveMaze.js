@@ -19,36 +19,46 @@ function solve(){
 
     helperQueue.push(startPos);
 
-    while(helperQueue.length > 0){
-		currRow = helperQueue[0].x;
-		currCol = helperQueue[0].y; 
+    loop();
+}
 
-		if(currRow+1 == endPos.x && currCol == endPos.y){
-			document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
-			break;
-		}
-		if(currRow-1 == endPos.x && currCol == endPos.y){
-			document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
-			break;
-		}
-		if(currRow == endPos.x && currCol+1 == endPos.y){
-			document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
-			break;
-		}
-		if(currRow == endPos.x && currCol-1 == endPos.y){
-			document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
-			break;
-		}
+function loop(){
+	setTimeout(function(){
+		if(helperQueue.length > 0){
+			currRow = helperQueue[0].x;
+			currCol = helperQueue[0].y;
 
-		if(!isBlocked(currRow,currCol)){
-			setNeighbour(currRow, currCol);
-		}else{
+			if(currRow+1 == endPos.x && currCol == endPos.y){
+				document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
+				return;
+			}
+			if(currRow-1 == endPos.x && currCol == endPos.y){
+				document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
+				return;
+			}
+			if(currRow == endPos.x && currCol+1 == endPos.y){
+				document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
+				return;
+			}
+			if(currRow == endPos.x && currCol-1 == endPos.y){
+				document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
+				return;
+			}
 
+			if(isSolvePressed){
+				if(!isBlocked(currRow,currCol)){
+					setNeighbour(currRow, currCol);
+				}else{
+	
+				}
+			}else {
+				return;
+			}
+			
+			helperQueue.shift();
+			loop();
 		}
-		setTimeout(10000);
-		helperQueue.shift();
-	}    
-	console.log(maze);
+	},100);   
 }
 
 function isVisited(a,b){

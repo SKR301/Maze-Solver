@@ -47,3 +47,49 @@ document.body.onmousedown = function() {
 document.body.onmouseup = function() {
     isMouseDown = false;
 }
+
+
+function createMaze(rows,cols){
+    initMaze(rows, cols);
+
+    var height = 0;
+    if(rows == 5){
+        height = 150;
+    }
+    if(rows == 8){
+        height = 94;
+    }
+    if(rows == 10){
+        height = 75;
+    }
+    if(rows == 15){
+        height = 50;
+    }
+    if(rows == 20){
+        height = 38;
+    }
+    if(rows == 25){
+        height = 30;
+    }
+    if(rows == 50){
+        height = 15;
+    }
+
+    document.getElementById('maze').innerHTML = '';
+    for(var a=0;a<rows;a++){
+        var row = document.createElement('div');
+            row.id = 'row'+(a);
+            row.className = 'row';
+        for(var b=0;b<cols;b++){
+            var cell = document.createElement('div');
+                cell.id = 'cell_'+(a)+'_'+(b);
+                cell.className = 'col border border-light rounded';
+                cell.onclick = function(){clickedCell(this)};
+                cell.onmouseover = function(){hoveredCell(this)};
+                cell.style.height = height+'px';
+            
+            row.appendChild(cell);
+        }
+        document.getElementById('maze').appendChild(row);
+    }
+}
