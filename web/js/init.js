@@ -22,7 +22,7 @@ function initMaze(rows,cols){
             maze[a][b] = 0;
             if(document.getElementById('cell_'+(a)+'_'+(b)) != undefined){
                 document.getElementById('cell_'+(a)+'_'+(b)).innerHTML = '';
-                document.getElementById('cell_'+(a)+'_'+(b)).style.backgroundColor = 'grey';
+                document.getElementById('cell_'+(a)+'_'+(b)).className = 'col border border-dark rounded bg-info';
             }
         }
     }
