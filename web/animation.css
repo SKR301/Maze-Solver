@@ -25,3 +25,19 @@
         visibility: visible;
     }
 }
+
+.cellAnimation {
+    animation: growInRotateAnimation 0.5s linear 1 normal forwards;
+}
+@keyframes growInRotateAnimation {
+    from {
+        opacity: 0.95;
+        transform: scale(0.75);
+        visibility: hidden;
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+        visibility: visible;
+    }
+}

@@ -86,7 +86,7 @@ function createMaze(rows,cols){
         for(var b=0;b<cols;b++){
             var cell = document.createElement('div');
                 cell.id = 'cell_'+(a)+'_'+(b);
-                cell.className = 'col border border-dark rounded bg-info text-center align-middle';
+                cell.className = 'col border border-dark rounded bg-info text-center align-middle cellAnimation';
                 cell.style.display = 'flex'; 
                 cell.style.justifyContent = 'center'; 
                 cell.style.alignItems = 'center'; 
