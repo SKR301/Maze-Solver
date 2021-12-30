@@ -8,29 +8,41 @@
         button {
             visibility: hidden;
         }
+
+        #wallBtn{
+            transition: transform 0.1s;
+        }
+        #startBtn{
+            transition: transform 0.1s;
+        }
+        #endBtn{
+            transition: transform 0.1s;
+        }
     </style>
 </head>
 <body class="bg-dark">
-    <button id="menuBtn_0" class="btn btn-outline-primary" onclick="createMaze(5, 5)">5x5</button>
-    <button id="menuBtn_1" class="btn btn-outline-light" onclick="createMaze(8, 8)">8x8</button>
-    <button id="menuBtn_2" class="btn btn-outline-success" onclick="createMaze(10, 10)">10x10</button>
-    <button id="menuBtn_3" class="btn btn-outline-danger" onclick="createMaze(15, 15)">15x15</button>
-    <button id="menuBtn_4" class="btn btn-outline-warning" onclick="createMaze(20, 20)">20x20</button>
-    <button id="menuBtn_5" class="btn btn-outline-info" onclick="createMaze(25, 25)">25x25</button>
+    <div id="menuBtn" class="mt-2">
+        <button id="menuBtn_0" class="btn btn-outline-primary" onclick="createMaze(5, 5)">5x5</button>
+        <button id="menuBtn_1" class="btn btn-outline-light" onclick="createMaze(8, 8)">8x8</button>
+        <button id="menuBtn_2" class="btn btn-outline-success" onclick="createMaze(10, 10)">10x10</button>
+        <button id="menuBtn_3" class="btn btn-outline-danger" onclick="createMaze(15, 15)">15x15</button>
+        <button id="menuBtn_4" class="btn btn-outline-warning" onclick="createMaze(20, 20)">20x20</button>
+        <button id="menuBtn_5" class="btn btn-outline-info" onclick="createMaze(25, 25)">25x25</button>
+    </div>
     <!-- <button onclick="createMaze(50, 50)">50x50</button> -->
 
-    <center class="mt-2">
-        <button id="wallBtn" class="btn btn-outline-light" onclick="enableWall()">wall</button>
-        <button id="startBtn" class="btn btn-light" onclick="enableStart()">start</button>
-        <button id="endBtn" class="btn btn-danger" onclick="enableEnd()">end</button>
+    <center class="mt-3">
+        <button id="wallBtn" class="btn btn-dark border-light mx-5" onclick="enableWall()">wall</button>
+        <button id="startBtn" class="btn btn-light mx-5" onclick="enableStart()">start</button>
+        <button id="endBtn" class="btn btn-danger mx-5" onclick="enableEnd()">end</button>
     </center>
     
-    <div id="maze" class="container-fluid d-flex flex-column mt-2 border border-light" style="width: 1500px;">
+    <div id="maze" class="container-fluid d-flex flex-column mt-3 border border-light" style="width: 1500px;">
     </div>
 
-    <center class="mt-5">
-        <button id="solveBtn" class="btn btn-success" onclick="solve()">solve</button>
-        <button id="resetBtn" class="btn btn-warning" onclick="reset()">reset</button>
+    <center class="mt-3">
+        <button id="solveBtn" class="btn btn-success mx-5" onclick="solve()">solve</button>
+        <button id="resetBtn" class="btn btn-warning mx-5" onclick="reset()">reset</button>
     </center>
     
 </body>
@@ -43,7 +55,7 @@ for (var i = 0; i < 6; i++) {
     (function(a) {
         setTimeout(function() {
             document.getElementById('menuBtn_'+a).classList.add('growIn');
-        }, i * 500);
+        }, i * 250);
     })(i)
 }
 
