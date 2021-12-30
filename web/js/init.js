@@ -55,6 +55,7 @@ document.body.onmouseup = function() {
 function createMaze(rows,cols){
     initMaze(rows, cols);
 
+    loadCommandButton()
     document.getElementById('mazePlay').style.visibility = 'visible';
 
     var height = 0;
