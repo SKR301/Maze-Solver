@@ -12,24 +12,27 @@
 </head>
 <body class="bg-dark">
 
-    <button onclick="createMaze(5, 5)">5x5</button>
-    <button onclick="createMaze(8, 8)">8x8</button>
-    <button onclick="createMaze(10, 10)">10x10</button>
-    <button onclick="createMaze(15, 15)">15x15</button>
-    <button onclick="createMaze(20, 20)">20x20</button>
-    <button onclick="createMaze(25, 25)">25x25</button>
+    <button class="btn btn-outline-primary" onclick="createMaze(5, 5)">5x5</button>
+    <button class="btn btn-outline-light" onclick="createMaze(8, 8)">8x8</button>
+    <button class="btn btn-outline-success" onclick="createMaze(10, 10)">10x10</button>
+    <button class="btn btn-outline-danger" onclick="createMaze(15, 15)">15x15</button>
+    <button class="btn btn-outline-warning" onclick="createMaze(20, 20)">20x20</button>
+    <button class="btn btn-outline-info" onclick="createMaze(25, 25)">25x25</button>
     <!-- <button onclick="createMaze(50, 50)">50x50</button> -->
 
-    <center class="mt-5">
-        <button id="wallBtn" onclick="enableWall()">wall</button>
-        <button id="startBtn" onclick="enableStart()">start</button>
-        <button id="endBtn" onclick="enableEnd()">end</button>
-        <button id="solveBtn" onclick="solve()">solve</button>
-        <button id="resetBtn" onclick="reset()">reset</button>
+    <center class="mt-2">
+        <button id="wallBtn" class="btn btn-outline-light" onclick="enableWall()">wall</button>
+        <button id="startBtn" class="btn btn-light" onclick="enableStart()">start</button>
+        <button id="endBtn" class="btn btn-danger" onclick="enableEnd()">end</button>
     </center>
     
-    <div id="maze" class="container-fluid d-flex flex-column mt-5 border border-light" style="width: 1500px;">
+    <div id="maze" class="container-fluid d-flex flex-column mt-2 border border-light" style="width: 1500px;">
     </div>
+
+    <center class="mt-5">
+        <button id="solveBtn" class="btn btn-success" onclick="solve()">solve</button>
+        <button id="resetBtn" class="btn btn-warning" onclick="reset()">reset</button>
+    </center>
     
 </body>
 <script src="js/init.js"></script>
