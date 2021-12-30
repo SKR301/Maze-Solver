@@ -3,11 +3,11 @@ var helperQueue = [];
 function solve(){
 	helperQueue = [];
     if(startPos.x == -1 || startPos.y == -1){
-        alert('Select a starting point before proceeding');
+        alert('Select a starting point before proceeding further');
         return;
     }
     if(endPos.x == -1 || endPos.y == -1){
-        alert('Select an ending point before proceeding');
+        alert('Select an ending point before proceeding further');
         return;
     }
 

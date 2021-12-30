@@ -55,6 +55,8 @@ document.body.onmouseup = function() {
 function createMaze(rows,cols){
     initMaze(rows, cols);
 
+    document.getElementById('mazePlay').style.visibility = 'visible';
+
     var height = 0;
     if(rows == 5){
         height = 150;

@@ -1,0 +1,17 @@
+button {
+    visibility: hidden;
+}
+#mazePlay {
+    visibility: hidden;
+}
+
+#wallBtn{
+    transition: transform 0.1s;
+}
+#startBtn{
+    transition: transform 0.1s;
+}
+#endBtn{
+    transition: transform 0.1s;
+}
+

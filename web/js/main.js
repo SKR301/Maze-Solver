@@ -42,7 +42,7 @@ function setStart(cell){
     } else {
         if(startPos.x == -1 && startPos.y == -1){
             if(maze[row][col] != 0){
-                alert('This is already occupied can\'t be a starting point')
+                alert('This cell is already occupied. It can\'t be a starting point')
             } else {
                 maze[row][col] = 1;
                 startPos = {x: row, y: col};
@@ -65,7 +65,7 @@ function setEnd(cell){
     } else {
         if(endPos.x == -1 && endPos.y == -1){
             if(maze[row][col] != 0){
-                alert('This is already occupied can\'t be a starting point')
+                alert('This cell is already occupied. It can\'t be an ending point')
             } else {
                 maze[row][col] = NaN;
                 endPos = {x: row, y: col};
