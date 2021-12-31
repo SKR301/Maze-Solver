@@ -1,6 +1,6 @@
 var helperQueue = [];
 
-function solve(){
+async function solve(){
 	helperQueue = [];
     if(startPos.x == -1 || startPos.y == -1){
         alert('Select a starting point before proceeding further');
@@ -18,48 +18,49 @@ function solve(){
     document.getElementById('endBtn').disabled = true;
 
     helperQueue.push(startPos);
-    popProcessPush()
+
+    let done = false;
+    while (!done) {
+		done = await popProcessPush()
+	}
 	// showPath();
 }
 
-function popProcessPush(){
-	setTimeout(function(){
-		if(helperQueue.length > 0){
-			currRow = helperQueue[0].x;
-			currCol = helperQueue[0].y;
+async function popProcessPush(){
+	if(helperQueue.length > 0){
+		currRow = helperQueue[0].x;
+		currCol = helperQueue[0].y;
 
-			if(currRow+1 == endPos.x && currCol == endPos.y){
-				document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
-				return;
-			}
-			if(currRow-1 == endPos.x && currCol == endPos.y){
-				document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
-				return;
-			}
-			if(currRow == endPos.x && currCol+1 == endPos.y){
-				document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
-				return;
-			}
-			if(currRow == endPos.x && currCol-1 == endPos.y){
-				document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
-				return;
-			}
-
-			if(isSolvePressed){
-				if(!isBlocked(currRow,currCol)){
-					setNeighbour(currRow, currCol);
-				}else{
-	
-				}
-			}else {
-				return;
-			}
-			
-			helperQueue.shift();
-			popProcessPush();
-		} else {
+		if(currRow+1 == endPos.x && currCol == endPos.y){
+			document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
+			return true;
 		}
-	},50); 
+		if(currRow-1 == endPos.x && currCol == endPos.y){
+			document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
+			return true;
+		}
+		if(currRow == endPos.x && currCol+1 == endPos.y){
+			document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
+			return true;
+		}
+		if(currRow == endPos.x && currCol-1 == endPos.y){
+			document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
+			return true;
+		}
+
+		if(isSolvePressed){
+			if(!isBlocked(currRow,currCol)){
+				setNeighbour(currRow, currCol);
+			}else{
+
+			}
+		}else {
+			return;
+		}
+
+		helperQueue.shift();
+	} else {
+	}
 }
 
 // function showPath(){
