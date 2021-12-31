@@ -1,4 +1,5 @@
 var helperQueue = [];
+var dist;
 
 async function solve(){
 	helperQueue = [];
@@ -22,18 +23,19 @@ async function solve(){
 
     helperQueue.push(startPos);
 
-    let done = false;
+    var done = false;
     while (!done) {
 		done = await popProcessPush()
 	}
 
-	fillCell(startPos.x, startPos.y);
-	// showPath();
+	fillCell(startPos.x, startPos.y)
+
+	setTimeout(function(){showPath()},5000);
 }
 
 function fillCell(a,b){
 	setTimeout(function(){
-		if(maze[a][b] != 0 && !document.getElementById('cell_'+(a)+'_'+(b)).className.includes('bg-secondary')){
+		if(maze[a][b] != 0 && maze[a][b] != -1 && !document.getElementById('cell_'+(a)+'_'+(b)).className.includes('bg-secondary')){
 			document.getElementById('cell_'+(a)+'_'+(b)).innerHTML = maze[a][b];
 			document.getElementById('cell_'+(a)+'_'+(b)).classList.remove('bg-info');
 			document.getElementById('cell_'+(a)+'_'+(b)).classList.add('bg-secondary');
@@ -97,36 +99,39 @@ async function popProcessPush(){
 	}
 }
 
-// function showPath(){
-// 	var a = endPos.x;
-// 	var b = endPos.y;
-	// do{
-	// 	// console.log(a,b)
-	// 	if((a-1 > 0) && (!isBlocked(a-1,b)) && (maze[a][b]-1 == maze[a-1][b])) {
-	// 		a = a-1;
-	// 		b = b;
-	// 		continue;
-	// 	}
-	// 	if((a+1 < ROWS-1) && (!isBlocked(a+1,b)) && (maze[a][b]-1 == maze[a+1][b])) {
-	// 		a = a+1;
-	// 		b = b;
-	// 		continue;
-	// 	}
-	// 	if((b-1 > 0) && (!isBlocked(a,b-1)) && (maze[a][b]-1 == maze[a][b-1])) {
-	// 		a = a;
-	// 		b = b-1;
-	// 		continue;
-	// 	}
-	// 	if((b+1 < COLS-1) && (!isBlocked(a,b+1)) && (maze[a][b]-1 == maze[a][b+1])) {
-	// 		a = a;
-	// 		b = b+1;
-	// 		continue;
-	// 	}
-// 
-	// }while(!(a == startPos.x && b == startPos.y));
-	// 
-	// console.log(a,b)
-// }
+function showPath(){
+	var a = endPos.x;
+	var b = endPos.y;
+	do{
+		if(!(a == startPos.x && b == startPos.y) || !(a == endPos.x && b == endPos.y)){
+			console.log(a,b)
+			document.getElementById('cell_'+(a)+'_'+(b)).classList.remove('bg-secondary');
+			document.getElementById('cell_'+(a)+'_'+(b)).classList.add('bg-warning');
+		}
+
+		if((a > 0) && (!isBlocked(a-1,b)) && (maze[a][b]-1 == maze[a-1][b])) {
+			a = a-1;
+			b = b;
+			continue;
+		}
+		if((a < ROWS-1) && (!isBlocked(a+1,b)) && (maze[a][b]-1 == maze[a+1][b])) {
+			a = a+1;
+			b = b;
+			continue;
+		}
+		if((b > 0) && (!isBlocked(a,b-1)) && (maze[a][b]-1 == maze[a][b-1])) {
+			a = a;
+			b = b-1;
+			continue;
+		}
+		if((b < COLS-1) && (!isBlocked(a,b+1)) && (maze[a][b]-1 == maze[a][b+1])) {
+			a = a;
+			b = b+1;
+			continue;
+		}
+
+	}while(!(a == startPos.x && b == startPos.y));
+}
 
 function isVisited(a,b){
 	return  (maze[a][b] != 0)? true: false;
