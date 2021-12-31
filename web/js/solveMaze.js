@@ -16,6 +16,9 @@ async function solve(){
     document.getElementById('wallBtn').disabled = true;
     document.getElementById('startBtn').disabled = true;
     document.getElementById('endBtn').disabled = true;
+    document.getElementById('wallBtn').style.transform = 'scale(1)';
+    document.getElementById('startBtn').style.transform = 'scale(1)';
+    document.getElementById('endBtn').style.transform = 'scale(1)';
 
     helperQueue.push(startPos);
 
@@ -36,21 +39,20 @@ function fillCell(a,b){
 			document.getElementById('cell_'+(a)+'_'+(b)).classList.add('bg-secondary');
 
 			if(a>0){
-				fillCell(a-1,b)
+				fillCell(a-1,b);
 			} 
 			if(a<ROWS-1){
-				fillCell(a+1,b)
+				fillCell(a+1,b);
 			}
 			if(b>0){
-				fillCell(a,b-1)
+				fillCell(a,b-1);
 			} 
 			if(b<COLS-1){
-				fillCell(a,b+1)
+				fillCell(a,b+1);
 			}
 		} else {
 			return;
 		}
-
 	}, 50);
 }
 
