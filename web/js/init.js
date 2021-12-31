@@ -41,6 +41,10 @@ function initMaze(rows,cols){
     document.getElementById('wallBtn').disabled = false;
     document.getElementById('startBtn').disabled = false;
     document.getElementById('endBtn').disabled = false;
+
+    document.getElementById('wallBtn').style.transform = 'scale(1)';
+    document.getElementById('startBtn').style.transform = 'scale(1)';
+    document.getElementById('endBtn').style.transform = 'scale(1)';
 }
 
 var isMouseDown = false;
@@ -50,7 +54,6 @@ document.body.onmousedown = function() {
 document.body.onmouseup = function() {
     isMouseDown = false;
 }
-
 
 function createMaze(rows,cols){
     initMaze(rows, cols);
