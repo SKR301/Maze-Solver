@@ -30,7 +30,14 @@ async function solve(){
 
 	fillCell(startPos.x, startPos.y)
 
-	setTimeout(function(){showPath()},5000);
+
+	setTimeout(function(){
+		if(isNaN(maze[endPos.x][endPos.y])){
+			alert('No possible path');
+		} else {
+			showPath()
+		}
+	},5000);
 }
 
 function fillCell(a,b){
@@ -66,29 +73,28 @@ async function popProcessPush(){
 		if(currRow+1 == endPos.x && currCol == endPos.y){
 			maze[endPos.x][endPos.y] = maze[currRow][currCol]+1;
 			// document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
-			return true;
+			return 1;
 		}
 		if(currRow-1 == endPos.x && currCol == endPos.y){
 			maze[endPos.x][endPos.y] = maze[currRow][currCol]+1;
 			// document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
-			return true;
+			return 1;
 		}
 		if(currRow == endPos.x && currCol+1 == endPos.y){
 			maze[endPos.x][endPos.y] = maze[currRow][currCol]+1;
 			// document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
-			return true;
+			return 1;
 		}
 		if(currRow == endPos.x && currCol-1 == endPos.y){
 			maze[endPos.x][endPos.y] = maze[currRow][currCol]+1;
 			// document.getElementById('cell_'+(endPos.x)+'_'+(endPos.y)).innerHTML = maze[currRow][currCol]+1;
-			return true;
+			return 1;
 		}
 
 		if(isSolvePressed){
 			if(!isBlocked(currRow,currCol)){
 				setNeighbour(currRow, currCol);
 			}else{
-
 			}
 		}else {
 			return;
@@ -96,6 +102,7 @@ async function popProcessPush(){
 
 		helperQueue.shift();
 	} else {
+		return 1;
 	}
 }
 
@@ -152,9 +159,6 @@ function setNeighbour(a, b){
 				maze[a-1][b] = possibleVal;
 				helperQueue.push({x: a-1, y: b});
 			}
-            // document.getElementById('cell_'+(a-1)+'_'+(b)).innerHTML = maze[a-1][b];
-			// document.getElementById('cell_'+(a-1)+'_'+(b)).classList.remove('bg-info');
-			// document.getElementById('cell_'+(a-1)+'_'+(b)).classList.add('bg-secondary');
 		}
 	}
 	if(b>0){
@@ -165,9 +169,6 @@ function setNeighbour(a, b){
 				maze[a][b-1] = possibleVal;
 				helperQueue.push({x: a, y: b-1});
 			}
-            // document.getElementById('cell_'+(a)+'_'+(b-1)).innerHTML = maze[a][b-1];
-			// document.getElementById('cell_'+(a)+'_'+(b-1)).classList.remove('bg-info');
-			// document.getElementById('cell_'+(a)+'_'+(b-1)).classList.add('bg-secondary');
 		}
 	}
 	if(a<ROWS-1){
@@ -178,9 +179,6 @@ function setNeighbour(a, b){
 				maze[a+1][b] = possibleVal;
 				helperQueue.push({x: a+1,y: b});
 			}
-            // document.getElementById('cell_'+(a+1)+'_'+(b)).innerHTML = maze[a+1][b];
-			// document.getElementById('cell_'+(a+1)+'_'+(b)).classList.remove('bg-info');
-			// document.getElementById('cell_'+(a+1)+'_'+(b)).classList.add('bg-secondary');
 		}
 	}
 	if(b<COLS-1){
@@ -191,9 +189,6 @@ function setNeighbour(a, b){
 				maze[a][b+1] = possibleVal;
 				helperQueue.push({x: a, y: b+1});
 			}
-            // document.getElementById('cell_'+(a)+'_'+(b+1)).innerHTML = maze[a][b+1];
-			// document.getElementById('cell_'+(a)+'_'+(b+1)).classList.remove('bg-info');
-			// document.getElementById('cell_'+(a)+'_'+(b+1)).classList.add('bg-secondary');
 		}
 	}
 }
