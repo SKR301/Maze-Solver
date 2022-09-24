@@ -30,14 +30,13 @@ async function solve(){
 
 	fillCell(startPos.x, startPos.y)
 
-
 	setTimeout(function(){
 		if(isNaN(maze[endPos.x][endPos.y])){
 			alert('No possible path');
 		} else {
 			showPath()
 		}
-	},5000);
+	},maze[endPos.x][endPos.y]*50 + 500);
 }
 
 function fillCell(a,b){
@@ -111,7 +110,7 @@ function showPath(){
 	var b = endPos.y;
 	do{
 		if(!(a == startPos.x && b == startPos.y) || !(a == endPos.x && b == endPos.y)){
-			console.log(a,b)
+			// console.log(a,b)
 			document.getElementById('cell_'+(a)+'_'+(b)).classList.remove('bg-secondary');
 			document.getElementById('cell_'+(a)+'_'+(b)).classList.add('bg-warning');
 		}
