@@ -3,7 +3,7 @@ A cli program to solve randomly generated mazes using breath first search.
   
 ## Table of Content
 - [Technologies](#technologies)
-- [HowTo](#howto)
+- [Usage](#usage)
 - [Screenshots](#screenshots)
 - [Contributors](#contributors)
 
@@ -28,7 +28,7 @@ A cli program to solve randomly generated mazes using breath first search.
 5. You can check out the `test.cpp` file for examples.
 
 ## Screenshots
-
+![image](https://user-images.githubusercontent.com/47807051/192112585-7df52524-9585-48fc-9149-cae1f326f348.png)
 
 ## Contributors
 @SKR301- [Saurav Kumar](https://github.com/SKR301): Original Creator
