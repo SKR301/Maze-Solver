@@ -1,5 +1,5 @@
 # Maze-Solver
-A cli program to solve randomly generated mazes using breath first search.
+A program to solve randomly generated mazes using breath first search.
   
 ## Table of Content
 - [Technologies](#technologies)
